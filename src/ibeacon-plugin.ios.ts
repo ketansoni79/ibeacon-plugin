@@ -33,7 +33,8 @@ export class ESTDeviceManagerDelegateImpl extends NSObject implements ESTDeviceM
 }
 
 export class Bescon{
-    public manager: ESTDeviceManager ;
+    public message: string
+    public manager: ESTDeviceManager
 
     delegate: ESTDeviceManagerDelegateImpl = ESTDeviceManagerDelegateImpl.new()
 
@@ -42,5 +43,11 @@ export class Bescon{
         this.manager.delegate = this.delegate
     }
     
-    
+    scan(){
+        if(this.manager.isScanning){
+            this.message = "sanning for devices"
+        }else{
+            this.message = "not scanning for devices"
+        }
+    }
 }
