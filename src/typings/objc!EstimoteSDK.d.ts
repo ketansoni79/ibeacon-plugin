@@ -5130,7 +5130,7 @@ declare class ESTBeaconUpdateInfo extends NSObject implements NSCoding {
 
 	constructor(o: { macAddress: string; config: ESTBeaconUpdateConfig; delegate: ESBeaconUpdateInfoDelegate; });
 
-	description(): string;
+	description: string;
 
 	encodeWithCoder(aCoder: NSCoder): void;
 
@@ -9784,7 +9784,7 @@ declare class ESTRequestBase extends NSObject implements NSURLConnectionDataDele
 
 	sendRequest(): void;
 
-	sendRequestWithCompletion(completion: (p1: any, p2: NSError) => void): void;
+	sendRequestWithCompletion(completion: ((p1: any, p2: NSError) => void) | any): void;
 }
 
 interface ESTRequestBaseDelegate extends NSObjectProtocol {
@@ -10104,9 +10104,9 @@ declare class ESTRequestPostFormData extends ESTRequestBase {
 
 declare class ESTRequestPostJSON extends ESTRequestBase {
 
-	static alloc(): ESTRequestPostJSON; // inherited from NSObject
+	static alloc(): ESTRequestPostJSON | any; // inherited from NSObject
 
-	static new(): ESTRequestPostJSON; // inherited from NSObject
+	static new(): ESTRequestPostJSON | any; // inherited from NSObject
 
 	setParamsForRequest(params: any, request: NSMutableURLRequest): void;
 }
