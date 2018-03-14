@@ -1,13 +1,3 @@
-
-interface ESTDeviceManagerDelegate extends NSObjectProtocol {
-
-	deviceManagerDidDiscoverDevices?(manager: ESTDeviceManager, devices: NSArray<ESTDevice>): void;
-
-	deviceManagerDidFailDiscovery?(manager: ESTDeviceManager): void;
-
-	deviceManagerDidFailDiscoveryWithError?(manager: ESTDeviceManager, error: NSError): void;
-}
-
 export class ESTDeviceManagerDelegateImpl extends NSObject implements ESTDeviceManagerDelegate{
 
 
