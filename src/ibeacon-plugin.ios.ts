@@ -22,22 +22,27 @@ export class ESTDeviceManagerDelegateImpl extends NSObject implements ESTDeviceM
 
 }
 
-export class Bescon{
+export class Beacon{
     public message: string
     public manager: ESTDeviceManager
-
-    delegate: ESTDeviceManagerDelegateImpl = ESTDeviceManagerDelegateImpl.new()
+    public filter: ESTDeviceFilter
+    public delegate: ESTDeviceManagerDelegateImpl = ESTDeviceManagerDelegateImpl.new()
 
     constructor(){
         this.manager = ESTDeviceManager.alloc()
         this.manager.delegate = this.delegate
     }
-    
-    scan(){
-        if(this.manager.isScanning){
-            this.message = "sanning for devices"
-        }else{
-            this.message = "not scanning for devices"
-        }
+
+    startScanning(){
+        this.manager.startDeviceDiscoveryWithFilter(this.filter)
     }
+
+    isScanning(){
+        return this.manager.isScanning
+    }
+
+    stopScanning(){
+        this.manager.stopDeviceDiscovery()
+    }
+
 }
