@@ -1,12 +1,14 @@
 import { Observable } from 'tns-core-modules/data/observable';
 import * as app from 'tns-core-modules/application';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
+import { IbeaconPlugin } from './ibeacon-plugin.android';
 
-export class Common extends Observable {
+export class Common {
   public message: string;
 
   constructor() {
-    super();
+    // super();
+    var x = new IbeaconPlugin()
     this.message = Utils.SUCCESS_MSG();
   }
 

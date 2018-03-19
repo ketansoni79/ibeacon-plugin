@@ -1,3 +1,6 @@
+import { Common } from './ibeacon-plugin.common';
+
+
 export class ESTDeviceManagerDelegateImpl extends NSObject implements ESTDeviceManagerDelegate{
 
 
@@ -22,14 +25,16 @@ export class ESTDeviceManagerDelegateImpl extends NSObject implements ESTDeviceM
 
 }
 
-export class Beacon{
+export class Beacon extends Common{
     public message: string
     public manager: ESTDeviceManager
     public filter: ESTDeviceFilter
     public delegate: ESTDeviceManagerDelegateImpl = ESTDeviceManagerDelegateImpl.new()
 
     constructor(){
-        this.manager = ESTDeviceManager.alloc()
+        super()
+
+        this.manager = ESTDeviceManager.new()
         this.manager.delegate = this.delegate
     }
 
